@@ -8,41 +8,45 @@
 		div {
 			font-family: Arial, sans-serif;
 			color: white;
-			position: absolute;
 			text-align: center;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
+			margin: auto;
 		}
 		label{
 			width:240px;
 			display:inline-block;
 			text-align: right;
 		}
+		.button {
+			color: green;
+		}
 	</style>
 <head>
-	<title>Create Account</title>
+	<title>Register Account</title>
 </head>
 	
 <body style="background-image: url('Background.jpg');">
 
-	<div>
+	<div heading>
 	<h2>Please enter your details</h2>
+	</div>
 		
-	<form>
+	<form action="/" method="get">
+	<div>
 		<label for="name">Names:</label>
-		<input type="text" id="name" name="name"><br><br>
+		<input type="text" id="name" name="name" required><br><br>
 		<label for="surname">Surname:</label>
-		<input type="text" id="surname" name="surname"><br><br>
+		<input type="text" id="surname" name="surname" required><br><br>
 		<label for="stdntnum">Student Number:</label>
-		<input type="number" id="stdntnum" name="stdntnum"><br><br>
+		<input type="number" id="stdntnum" name="stdntnum" required><br><br>
 		<label for="yos">Year of Study:</label>
-		<input type="number" id="yos" name="yos"><br><br>
+		<input type="number" id="yos" name="yos"required><br><br>
 		<label for="dept">Department:</label>
-		<input type="text" id="dept" name="dept"><br><br>
+		<input type="text" id="dept" name="dept" required><br><br>
 		<label for="password">Password:</label>
-		<input type="password" id="password" name="password"><br><br>
+		<input type="password" id="password" name="password" required><br><br>
+		<div button>
 		<input type="submit" value="Submit">
+		</div
 	</form>
 	</div>
 </body>

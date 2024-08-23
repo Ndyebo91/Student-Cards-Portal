@@ -4,42 +4,50 @@
 		.heading {
 			font-family: Arial, sans-serif;
 			color: white;
-			text-align: center;
-			vertical-align: middle;
 		}
 		div {
 			font-family: Arial, sans-serif;
 			color: white;
-			position: absolute;
 			text-align: center;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
+			margin: auto;
+			
 		}
 		label{
 			width:240px;
 			display:inline-block;
 			text-align: right;
 		}
+		.button {
+			color: green;
+		}
+		
 	</style>
 <head>
 	<title>Sign In</title>
+	<script defer src=".script.js">
+	</script>
+	
 </head>
 	
 <body style="background-image: url('Background.jpg');">
 
-	<div>
+	<div heading>
 	<h2>Sign In</h2>
+	</div>
 		
-	<form>
+	<form action="/" method="get">
+	<div>
 		<label for="stdntnum">Student Number:</label>
-		<input type="text" id="stdntnum" name="stdntnum"><br><br>
+		<input type="text" id="stdntnum" name="stdntnum" required><br><br>
 		<label for="password">Password:</label>
-		<input type="password" id="password" name="password"><br><br>
+		<input type="password" id="password" name="password" required><br><br>
+		<div button>
 		<input type="submit" value="Sign In">
+		</div
 	</form>
 		<a href="Create.html"><p style="color:White;">Register Account</p></a>
 		<a href="Forgot.html"><p style="color:White;">Forgot Password?</p></a>
 	</div>
 </body>
+<script src="./Script.js"></script>
 </html>

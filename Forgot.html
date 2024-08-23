@@ -8,16 +8,16 @@
 		div {
 			font-family: Arial, sans-serif;
 			color: white;
-			position: absolute;
 			text-align: center;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
+			margin: auto;
 		}
 		label{
 			width:240px;
 			display:inline-block;
 			text-align: right;
+		}
+		.button {
+			color: green;
 		}
 	</style>
 <head>
@@ -26,17 +26,21 @@
 	
 <body style="background-image: url('Background.jpg');">
 
-	<div>
+	<div heading>
 	<h2>Forgot Password</h2>
+	</div>
 		
-	<form>
+	<form action="/" method="get">
+	<div>
 		<label for="stdntnum">Student Number:</label>
-		<input type="text" id="stdntnum" name="stdntnum"><br><br>
+		<input type="text" id="stdntnum" name="stdntnum" required><br><br>
 		<label for="password">New Password:</label>
-		<input type="password" id="password" name="password"><br><br>
+		<input type="password" id="password" name="password" required><br><br>
 		<label for="password">Retype Password:</label>
-		<input type="password" id="password" name="password"><br><br>
+		<input type="password" id="password" name="password" required><br><br>
+		<div button>
 		<input type="submit" value="Save & Sign in">
+		</div
 	</form>
 		
 	</div>
