@@ -4,23 +4,23 @@
 		.heading {
 			font-family: Arial, sans-serif;
 			color: white;
+			text-align: center;
+			vertical-align: middle;
 		}
 		div {
 			font-family: Arial, sans-serif;
 			color: white;
+			position: absolute;
 			text-align: center;
-			margin: auto;
-			
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 		}
 		label{
 			width:240px;
 			display:inline-block;
 			text-align: right;
 		}
-		.button {
-			color: green;
-		}
-		
 	</style>
 <head>
 	<title>Sign In</title>
@@ -28,21 +28,17 @@
 	
 <body style="background-image: url('Background.jpg');">
 
-	<div heading>
+	<div>
 	<h2>Sign In</h2>
-	</div>
 		
 	<form>
-	<div>
 		<label for="stdntnum">Student Number:</label>
 		<input type="text" id="stdntnum" name="stdntnum"><br><br>
 		<label for="password">Password:</label>
 		<input type="password" id="password" name="password"><br><br>
-		<div button>
 		<input type="submit" value="Sign In">
-		</div
 	</form>
-		<a href="Create.html"><p style="color:White;">Create Account</p></a>
+		<a href="Create.html"><p style="color:White;">Register Account</p></a>
 		<a href="Forgot.html"><p style="color:White;">Forgot Password?</p></a>
 	</div>
 </body>
