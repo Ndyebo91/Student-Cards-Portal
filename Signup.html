@@ -1,53 +1,159 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+	<title>Sign In</title>
 	<style>
-		.heading {
+		body {
 			font-family: Arial, sans-serif;
+			background-image: url('Background.jpg');
 			color: white;
 		}
+
+		.heading {
+			text-align: center;
+		}
+
 		div {
-			font-family: Arial, sans-serif;
-			color: white;
 			text-align: center;
 			margin: auto;
-			
 		}
-		label{
-			width:240px;
-			display:inline-block;
+
+		label {
+			width: 240px;
+			display: inline-block;
 			text-align: right;
 		}
+
 		.button {
 			color: green;
 		}
-		
-	</style>
-<head>
-	<title>Sign In</title>
-	<script defer src=".script.js">
-	</script>
-	
-</head>
-	
-<body style="background-image: url('Background.jpg');">
 
-	<div heading>
-	<h2>Sign In</h2>
+		/* Modal Styles */
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.4);
+		}
+
+		.modal-content {
+			background-color: #fefefe;
+			margin: 15% auto;
+			padding: 20px;
+			border: 1px solid #888;
+			width: 80%;
+			max-width: 400px;
+			color: black;
+			text-align: center;
+		}
+
+		.close {
+			color: #aaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="heading">
+		<h2>Sign In</h2>
 	</div>
-		
-	<form action="/" method="get">
-	<div>
-		<label for="stdntnum">Student Number:</label>
-		<input type="text" id="stdntnum" name="stdntnum" required><br><br>
-		<label for="password">Password:</label>
-		<input type="password" id="password" name="password" required><br><br>
-		<div button>
-		<input type="submit" value="Sign In">
-		</div
+	<form id="signinForm">
+		<div>
+			<label for="stdntnum">Student Number:</label>
+			<input type="text" id="stdntnum" name="stdntnum" required><br><br>
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password" required><br><br>
+			<div class="button">
+				<input type="submit" value="Sign In">
+			</div>
+		</div>
 	</form>
-		<a href="Create.html"><p style="color:White;">Register Account</p></a>
-		<a href="Forgot.html"><p style="color:White;">Forgot Password?</p></a>
+	<div>
+		<a href="Create.html">
+			<p style="color:White;">Register Account</p>
+		</a>
+		<a href="Forgot.html">
+			<p style="color:White;">Forgot Password?</p>
+		</a>
 	</div>
+
+	<!-- Modal -->
+	<div id="errorModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p id="modalMessage">Incorrect student number or password. Please try again.</p>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		// Get the modal
+		var modal = document.getElementById("errorModal");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When user clicks on <span> (x), close the modal
+		span.onclick = function () {
+			modal.style.display = "none";
+		}
+
+		// When user clicks anywhere outside of the modal, close it
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+
+		// Handle form submission
+		$("#signinForm").submit(function (e) {
+			e.preventDefault(); // Prevent form from submitting normally
+
+			// Get values from the form
+			var stdntnum = $("#stdntnum").val();
+			var password = $("#password").val();
+
+			// Send data to the server for validation
+			$.ajax({
+				url: 'validate_login.php',
+				type: 'POST',
+				data: {
+					stdntnum: stdntnum,
+					password: password
+				},
+				success: function (response) {
+					if (response === 'success') {
+						// Successful login
+						window.location.href = "CreateCard.html"; // Redirect to CreateCard.html 
+					} else {
+						// Incorrect details
+						$("#modalMessage").text(response);
+						modal.style.display = "block";
+					}
+				},
+				error: function () {
+					$("#modalMessage").text("An error occurred. Please try again later.");
+					modal.style.display = "block";
+				}
+			});
+		});
+	</script>
 </body>
-<script src="./Script.js"></script>
+
 </html>
