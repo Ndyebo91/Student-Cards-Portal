@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('Background.jpg');
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #statusResult {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Check Your Status</h2>
+        <form id="checkStatusForm">
+            <input type="text" id="studentNumber" name="studentNumber" placeholder="Enter Student Number" required>
+            <button type="submit">Check Status</button>
+        </form>
+        <div id="statusResult"></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#checkStatusForm").submit(function (e) {
+                e.preventDefault();
+                var studentNumber = $("#studentNumber").val();
+
+                $.ajax({
+                    url: 'check_status.php',
+                    type: 'POST',
+                    data: { studentNumber: studentNumber },
+                    success: function (response) {
+                        $("#statusResult").html(response);
+                    },
+                    error: function () {
+                        $("#statusResult").html("An error occurred. Please try again later.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
